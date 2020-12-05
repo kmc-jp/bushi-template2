@@ -50,9 +50,14 @@
 \ifnum \c@secnumdepth >-2\relax
 \refstepcounter{part}%
 \addcontentsline{toc}{part}{%
-\prepartname\thepart\postpartname\hspace{1\jsZw}#1}%
+\prepartname\thepart\postpartname\hspace{1\jsZw}#1}{}% 最後の{}でページ数が出なくなる
 \else
-\addcontentsline{toc}{part}{#1}%
+\addcontentsline{toc}{part}{#1}{}% 最後の{}でページ数が出なくなる
 \fi
 \@endpart}
+
+\def\@endpart{\vfil\newpage
+\if@restonecol
+\twocolumn
+\fi}
 \makeatother
