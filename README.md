@@ -13,7 +13,7 @@
 $ ruby build.rb
 ```
 
-- TeXLive2020, ruby, pandoc(ver. 2)のインストールが必要です
+- TeXLive, ruby, pandoc(ver. 2)のインストールが必要です
 
 # 記事を書く人へ
 記事はMarkdown形式で書いてください。
