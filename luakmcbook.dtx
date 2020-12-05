@@ -37,6 +37,10 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 
+% ノド側にテキストが寄るのを直す
+\setlength{\textwidth}{\fullwidth}  %本文の幅(textwidth)を全体の幅(=ヘッダ部の幅)にそろえる
+\setlength{\evensidemargin}{\oddsidemargin} %偶数ページの余白と奇数ページの余白をそろえる
+
 % 部(part)の見出しを出さないようにする
 \makeatletter
 \renewcommand\part{%
@@ -52,7 +56,3 @@
 \fi
 \@endpart}
 \makeatother
-
-% ノド側にテキストが寄るのを直す
-\setlength{\textwidth}{\fullwidth}  %本文の幅(textwidth)を全体の幅(=ヘッダ部の幅)にそろえる
-\setlength{\evensidemargin}{\oddsidemargin} %偶数ページの余白と奇数ページの余白をそろえる

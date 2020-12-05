@@ -13,16 +13,23 @@
 
 \begin{document}
 \maketitle
+
+% 巻頭言
+\include{preface}
+
+% 目次生成
 \tableofcontents
+
 \part{最近のKMC}
 \chapter{最近のKMC}
 恒例の「最近のKMC」コーナーです。
 最近のKMCでの活動について、様々な方から寄稿いただきました。
 
+\include*{recent-kmc-kaicho}
+\include*{recent-kmc-daihyo}
 \include*{recent-kmc-kyopro}
 
 \part{部員のコラム}
-
-\include{kousei}
+\include{kousei} % 最初の章だけこうやって include* する。以降は普通のinclude
 
 \end{document}
