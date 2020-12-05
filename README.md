@@ -20,8 +20,10 @@ $ ruby build.rb
 
 記法は[こちら](https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#pandocs-markdown)参照。
 
-投稿はちょっと待ってね。
+## 記事の追加方法
+`kiji`ディレクトリ以下にMarkdownファイルを放り込んで、`bushi.tex`に`\include{拡張子抜きのファイル名}`を追加してやったあとビルドすると記事が追加されます。
 
+記事が描けたらPull Requestしてください。
 
 ##  一番上の見出しは `#` にしてください
 みほん
