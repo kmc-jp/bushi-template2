@@ -9,14 +9,27 @@
 ----
 
 # タイプセットする方法
-ちょっと待ってね。
+```
+$ ruby build.rb
+```
 
+- TeXLive2020, ruby, pandoc(ver. 2)のインストールが必要です
 
 # 記事を書く人へ
 記事はMarkdown形式で書いてください。
 
-- 一番上の見出しは `##` にしてください
-
 記法は[こちら](https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#pandocs-markdown)参照。
 
 投稿はちょっと待ってね。
+
+
+##  一番上の見出しは `#` にしてください
+みほん
+
+```
+\chapterauthor[tuda]{tuda}
+
+# 校正大会に関して（校正前に必ず読むこと）
+
+～本文～
+```
