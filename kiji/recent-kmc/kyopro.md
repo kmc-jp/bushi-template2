@@ -1,3 +1,5 @@
+\sectionauthor[zeke]{zeke}
+
 ### 競技プログラミング練習会 Normal
 
 こんにちは、競技プログラミングNormal練習会を担当していますid:zekeと申します。「じーく」と読みます。

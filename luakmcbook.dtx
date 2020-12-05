@@ -174,3 +174,125 @@
 %
 \makeatother
 % === 章の著者ここまで
+
+% === 節の著者ここから
+\makeatletter
+\def\@sect#1#2#3#4#5#6[#7]#8{%
+  \ifnum #2>\c@secnumdepth
+    \let\@svsec\@empty
+  \else
+    \refstepcounter{#1}%
+    \protected@edef\@svsec{\@seccntformat{#1}\relax}%
+  \fi
+  \@tempskipa #5\relax
+  \ifdim \@tempskipa<\z@
+    \def\@svsechd{%
+      #6{\hskip #3\relax
+      \@svsec #8}%
+      \csname #1mark\endcsname{#7}%
+      \addcontentsline{toc}{#1}{%
+        \ifnum #2>\c@secnumdepth \else
+          \protect\numberline{\bxjs@label@sect{#1}}%
+        \fi
+        #7\@makesectionauthortoc}}% 目次にフルネームを載せるなら #8
+  \else
+    \begingroup
+      \interlinepenalty \@M % 下から移動
+      #6{%
+        \@hangfrom{\hskip #3\relax\@svsec}%
+        #8\@@par}%
+    \endgroup
+    \csname #1mark\endcsname{#7}%
+    \addcontentsline{toc}{#1}{%
+      \ifnum #2>\c@secnumdepth \else
+        \protect\numberline{\bxjs@label@sect{#1}}%
+      \fi
+      #7\@makesectionauthortoc}% 目次にフルネームを載せるならここは #8
+  \fi
+  \@xsect{#5}}
+
+\def\@xsect#1{%
+  \@tempskipa #1\relax
+  \ifdim \@tempskipa<\z@
+    \@nobreakfalse
+    \global\@noskipsectrue
+    \everypar{%
+      \if@noskipsec
+        \global\@noskipsecfalse
+       {\setbox\z@\lastbox}%
+        \clubpenalty\@M
+        \begingroup \@svsechd \endgroup
+        \unskip
+        \@tempskipa #1\relax
+        \hskip -\@tempskipa
+      \else
+        \clubpenalty \@clubpenalty
+        \everypar\expandafter{\bxjs@if@ceph\everyparhook}%
+      \fi\bxjs@if@ceph\everyparhook}%
+  \else
+    \par \nobreak
+    \vskip \@tempskipa
+    \@afterheading
+  \fi
+  \if@slide
+    {\vskip\if@twocolumn-5\jsc@mpt\else-6\jsc@mpt\fi
+     \maybeblue\hrule height0\jsc@mpt depth1\jsc@mpt
+     \vskip\if@twocolumn 4\jsc@mpt\else 7\jsc@mpt\fi\relax}%
+  \fi
+  \@makesectionauthor%
+  \global\let\@sectionauthor\relax%
+  \global\let\@sectionauthortoc\relax%
+  \par  % 2000-12-18
+  \ignorespaces}
+
+% \begin{macro}{\sectionauthor}
+%
+% 節の著者を設定します。
+%
+%    \begin{macrocode}
+\newcommand*{\sectionauthor}[2][\relax]{
+  \gdef\@sectionauthor{#2}%
+  \ifx\relax#1
+    \gdef\@sectionauthortoc{#2}%
+  \else
+    \gdef\@sectionauthortoc{#1}%
+  \fi}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@sectionauthor}
+% \begin{macro}{\@sectionauthortoc}
+%
+% 節の著者を記憶します。
+%
+%    \begin{macrocode}
+\let\@sectionauthor\relax
+\let\@sectionauthortoc\relax
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\@makesectionauthor}
+%
+% 節の著者を出力します。
+%
+%    \begin{macrocode}
+\def\@makesectionauthor{
+  \ifx\relax\@sectionauthor\else
+    {\flushright\normalfont\large\headfont\@sectionauthor\endflushright\par\nobreak}%
+  \fi}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\@makesectionauthortoc}
+%
+% 目次用に節の著者を出力します。
+%
+%    \begin{macrocode}
+\def\@makesectionauthortoc{
+  \ifx\relax\@sectionauthortoc\else\space(\@sectionauthortoc)\fi}
+%    \end{macrocode}
+% \end{macro}
+
+\makeatother
+% === 節の著者ここまで
