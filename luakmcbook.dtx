@@ -1,0 +1,39 @@
+\NeedsTeXFormat{LaTeX2e}
+
+%\ProvidesClass{luakmcbook}[2020/12/06 customized bxjsbook class]
+
+% bxjsbookをもとにする
+\LoadClassWithOptions{bxjsbook}
+
+% === ここから Pandoc のテンプレからもってきたやつ
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+
+\usepackage{unicode-math}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+
+\usepackage{hyperref}
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+% === ここまで Pandoc のテンプレからもってきたやつ
+
+% 改頁なしのinclude等を提供
+\usepackage{newclude}
+
+% 欧文フォントを変更
+\usepackage{fontspec}
+\setmainfont[Scale=MatchLowercase]{Linux Libertine O} % \rmfamily のフォント
+
+% 校正規約はこれがないと組めなかった
+\usepackage{booktabs}
+\usepackage{longtable}
+

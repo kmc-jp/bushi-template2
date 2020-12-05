@@ -3,6 +3,9 @@ require 'fileutils'
 # pandocのオプションを設定
 PANDOC='pandoc -f markdown+east_asian_line_breaks -t latex -N --pdf-engine=lualatex --filter pandoc-citeproc --top-level-division=part --table-of-contents --toc-depth=3'
 
+# クラスファイルを生成
+system("lualatex luakmcbook.ins")
+
 # MarkdownをTeXに変換
 Dir.glob('kiji/**/*') do |file|
   if FileTest.file? file then
