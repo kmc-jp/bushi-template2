@@ -35,3 +35,29 @@ $ ruby build.rb
 
 ～本文～
 ```
+
+## 画像を足したいときは
+自分の記事が`kiji/suzusime/sime.md`なら、`kiji/suzusime/images/hoge.png`に画像を置いて、
+
+bushi.texの
+
+```
+% 画像を子ディレクトリから参照したいときは
+% \graphicspath{{hoge1/}{hoge2/}} みたいに足していってね
+\graphicspath{{./}{recent-kmc/}}
+```
+
+のところを
+
+```
+% 画像を子ディレクトリから参照したいときは
+% \graphicspath{{hoge1/}{hoge2/}} みたいに足していってね
+\graphicspath{{./}{recent-kmc/}{suzusime/}}
+```
+
+のように書き換えて、記事には
+
+![](images/hoge.jpg){ width=50mm height=40mm }
+
+のように書いてください。
+

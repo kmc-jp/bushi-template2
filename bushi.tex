@@ -11,6 +11,10 @@
 \title{独習KMC vol.~16}
 \date{}
 
+% 画像を子ディレクトリから参照したいときは
+% \graphicspath{{hoge1/}{hoge2/}} みたいに足していってね
+\graphicspath{{./}{recent-kmc/}}
+
 \begin{document}
 \maketitle
 
@@ -27,18 +31,18 @@
 
 まずは会長と代表からです。
 
-\include*{recent-kmc-kaicho}
-\include*{recent-kmc-daihyo}
+\include*{recent-kmc/kaicho}
+\include*{recent-kmc/daihyo}
 
 \chapter{最近のKMC --- 新入生プロジェクト}
 次に、毎年新入生向けに開いている「新入生プロジェクト」の担当者からです。
 
-\include*{recent-kmc-kyopro}
+\include*{recent-kmc/kyopro}
 
 \chapter{最近のKMC --- その他のプロジェクト}
 最後はその他のプロジェクトの担当者からです。
 
-\include*{recent-kmc-kyopro}
+\include*{recent-kmc/sample}
 
 \part{部員のコラム}
 \include{kousei} % 最初の章だけこうやって include* する。以降は普通のinclude

@@ -3,13 +3,21 @@ require 'fileutils'
 # pandocのオプションを設定
 PANDOC='pandoc -f markdown+east_asian_line_breaks -t latex -N --pdf-engine=lualatex --filter pandoc-citeproc --top-level-division=chapter --table-of-contents --toc-depth=3'
 
+# kijiの中身を雑にoutにコピー（ディレクトリつくるのめんどいので）
+Dir.glob('kiji/*') do |file|
+  FileUtils.cp_r(file, 'out')
+end
+
 # クラスファイルを生成
 system("lualatex luakmcbook.ins")
+
+# latexmkrcをコピー
+#FileUtils.cp_r('latexmkrc', './out/latexmkrc')
 
 # MarkdownをTeXに変換
 Dir.glob('kiji/**/*') do |file|
   if FileTest.file? file then
-    outfile = file.sub(/^kiji\//, '').sub(/\//, '-').sub(/.md$/, '.tex')
+    outfile = file.sub(/^kiji\//, '').sub(/.md$/, '.tex')
     system("#{PANDOC} -o out/#{outfile} #{file}")
   end
 end
