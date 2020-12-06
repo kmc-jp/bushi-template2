@@ -86,6 +86,16 @@ twitter-text は、以下の言語で実装されています。
 - Objective-C
 - Ruby
 
+JavaはAndroidアプリやWebアプリケーション（JVM実装）などのために必要でしょう。
+Objective-CもiOSアプリのためであると推測できます。
+JavaScriptはフロントエンド向けでしょう。
+
+Ruby実装があるのが興味深いです。
+Twitterは、かつてRuby on Railsで開発されていましたが、2008年にJava (JVM) への移行を始めています[^twitter-ruby-to-jvm]。
+twitter-textのfirst commitが2010/1/16で、その時点で全コードがJVM移行されていなかったため、Rubyでのtwitter-text実装が必要だったのでしょう。
+
+[^twitter-ruby-to-jvm]: Twitterが、Ruby on RailsからJavaVMへ移行する理由 － Publickey \url{https://www.publickey1.jp/blog/11/twitterruby_on_railsjavavm.html}
+
 ## おわりに
 
 いかがでしたか？
