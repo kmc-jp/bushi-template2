@@ -57,7 +57,9 @@ bushi.texの
 
 のように書き換えて、記事には
 
+```
 ![](images/hoge.jpg){ width=50mm height=40mm }
+```
 
 のように書いてください。
 
