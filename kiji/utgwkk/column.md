@@ -25,23 +25,23 @@
 図\ref{utgwkk:image:invalid-tweet-ihatov}は、日本語で258文字のツイートを投稿しようとしたが文字数制限を超過している様子です。
 ひらがな・カタカナ・漢字などは2文字としてカウントされるので、280文字の制限を超えてしまいます。
 
-![ツイート長の制限を超過している (日本語で258文字)\label{utgwkk:image:invalid-tweet-ihatov}](./image/invalid-tweet-ihatov.png)
+![ツイート長の制限を超過している (日本語で258文字)\label{utgwkk:image:invalid-tweet-ihatov}](./image/invalid-tweet-ihatov.png){ width=12cm }
 
 アルファベットで231文字のツイートを投稿しようとしている様子を図\ref{utgwkk:image:valid-tweet-lorem-ipsum}に示します。
 アルファベットは1文字としてカウントされるので、日本語で258文字のツイートとは異なり文字数制限を超過していません。
 
-![ツイート長の制限を超過していない (アルファベットで231文字)\label{utgwkk:image:valid-tweet-lorem-ipsum}](./image/valid-tweet-lorem-ipsum.png)
+![ツイート長の制限を超過していない (アルファベットで231文字)\label{utgwkk:image:valid-tweet-lorem-ipsum}](./image/valid-tweet-lorem-ipsum.png){ width=12cm }
 
 ただし、URLは例外です。
 validなURLであれば、長さに関係なく23文字としてカウントされます。
 したがって、図\ref{utgwkk:image:valid-tweet-long-url}のように長大なURLであっても、URLとしてvalidでさえあればツイートに含めることができます。
 
-![ツイート長の制限を超過していない (アルファベットで288文字のURL)\label{utgwkk:image:valid-tweet-long-url}](./image/valid-tweet-long-url.png)
+![ツイート長の制限を超過していない (アルファベットで288文字のURL)\label{utgwkk:image:valid-tweet-long-url}](./image/valid-tweet-long-url.png){ width=12cm }
 
 絵文字は全て「目に見える絵文字」1文字が2文字とカウントされます。
 図\ref{utgwkk:image:emoji-family-man-woman-girl-boy}は、父・母・息子・娘による家族の絵文字です。
 
-![父・母・息子・娘による家族の絵文字 (Twemoji) \label{utgwkk:image:emoji-family-man-woman-girl-boy}](./image/emoji-family-man-woman-girl-boy.png)
+![父・母・息子・娘による家族の絵文字 (Twemoji) \label{utgwkk:image:emoji-family-man-woman-girl-boy}](./image/emoji-family-man-woman-girl-boy.png){ width=2cm }
 
 この絵文字は、以下の文字によって構成されており、そして1文字としてカウントされます（括弧内はUnicodeのコードポイント）。
 
