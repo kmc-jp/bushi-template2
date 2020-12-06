@@ -10,11 +10,65 @@
 
 この記事では、Twitterにおけるツイートの文字数の数え方について、および文字数を数えるライブラリの実装について説明します。
 
-![ツイート長の制限を超過している (日本語で258文字)](./image/invalid-tweet-ihatov.png)
+## ツイートの文字数を数えることの難しさ
 
-![ツイート長の制限を超過していない (アルファベットで231文字)](./image/valid-tweet-lorem-ipsum.png)
+ツイートの文字数の数え方は、公式のドキュメントで解説されています[^twitter-counting-characters]。
+2020/12/6 時点で、ツイートの長さは最大で280文字です。
+ただし、文字種によって1文字とカウントするか2文字とカウントするかが変わります。
+そのため、単にプログラミング言語に組み込みの方法で文字数を数えるだけでは、ツイートの文字数制限を超過しているかどうかを判定することができません。
 
-![ツイート長の制限を超過していない (288文字のURL)](./image/valid-tweet-long-url.png)
+以下では、特に断りなく「1文字」「2文字」のように書いたときは、ツイートの長さの単位としての文字数のことだとします。
+また、「日本語で1文字」「アルファベットで1文字」のように言語名や文字種を明示したときは、ツイートの長さの単位ではなく、その文字種における文字数のことであるとします。
+
+[^twitter-counting-characters]: \url{https://developer.twitter.com/en/docs/counting-characters}
+
+図\ref{utgwkk:image:invalid-tweet-ihatov}は、日本語で258文字のツイートを投稿しようとしたが文字数制限を超過している様子です。
+ひらがな・カタカナ・漢字などは2文字としてカウントされるので、280文字の制限を超えてしまいます。
+
+![ツイート長の制限を超過している (日本語で258文字)\label{utgwkk:image:invalid-tweet-ihatov}](./image/invalid-tweet-ihatov.png)
+
+アルファベットで231文字のツイートを投稿しようとしている様子を図\ref{utgwkk:image:valid-tweet-lorem-ipsum}に示します。
+アルファベットは1文字としてカウントされるので、日本語で258文字のツイートとは異なり文字数制限を超過していません。
+
+![ツイート長の制限を超過していない (アルファベットで231文字)\label{utgwkk:image:valid-tweet-lorem-ipsum}](./image/valid-tweet-lorem-ipsum.png)
+
+ただし、URLは例外です。
+validなURLであれば、長さに関係なく23文字としてカウントされます。
+したがって、図\ref{utgwkk:image:valid-tweet-long-url}のように長大なURLであっても、URLとしてvalidでさえあればツイートに含めることができます。
+
+![ツイート長の制限を超過していない (アルファベットで288文字のURL)\label{utgwkk:image:valid-tweet-long-url}](./image/valid-tweet-long-url.png)
+
+絵文字は全て「目に見える絵文字」1文字が2文字とカウントされます。
+図\ref{utgwkk:image:emoji-family-man-woman-girl-boy}は、父・母・息子・娘による家族の絵文字です。
+
+![父・母・息子・娘による家族の絵文字 (Twemoji) \label{utgwkk:image:emoji-family-man-woman-girl-boy}](./image/emoji-family-man-woman-girl-boy.png)
+
+この絵文字は、以下の文字によって構成されており、そして1文字としてカウントされます（括弧内はUnicodeのコードポイント）。
+
+- 男性 (`U+1F468`)
+- ゼロ幅接合子 (`U+200D`)
+- 女性 (`U+1F469`)
+- ゼロ幅接合子( `U+200D`)
+- 女の子 (`U+1F467`)
+- ゼロ幅接合子( `U+200D`)
+- 男の子 (`U+1F466`)
+
+これらの「文字」によって構成された「目に見える絵文字」が1文字としてカウントされます。ゼロ幅接合子がなければ、それぞれの家族が独立した「目に見える絵文字」になるので、4文字とカウントされます。
+
+また、プログラミング言語によって絵文字が何文字としてカウントされるかが異なります。
+例えばJavaScriptでは `"(寿司の絵文字)".length` という式は1ではなく2を返します[^why-sushi-length-is-2]。
+
+[^why-sushi-length-is-2]: この理由については MDN などを読むか、お近くの JavaScript の達人に聞いてみてください。 \url{https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/length}
+
+このように、ツイートの文字数を正しく数えるのは非常に難しいということが分かります。
+
+- 文字種によって文字数のカウントが変わる
+  - 言語組み込みの方法だけでは正しくカウントできない
+- URLを特別扱いする必要がある
+  - どこまでがURLなのかを正しく判定する必要がある
+- 絵文字を特別扱いする必要がある
+  - 言語組み込みの方法だけでは正しくカウントできないことがある
+  - どこまでが「目に見える絵文字」なのかを正しく判定する必要がある
 
 ## おわりに
 
