@@ -108,6 +108,46 @@ Rust製のライブラリは、なんとC++やPythonなどの言語向けにも�
 [^twitter-text-rust]: \url{https://crates.io/crates/twitter-text}
 [^twitter-text-perl]: \url{https://metacpan.org/pod/Twitter::Text}
 
+## Twitter::Text (Perl実装) について
+
+さて、先日、先述したPerl向けのtwitter-textライブラリ Twitter::Text を実装・公開しました。
+以下のようにして、与えられた文字列がツイートとしてvalidかどうか、などを解析してくれます。
+
+```perl
+use Data::Dumper;
+use Twitter::Text;
+ 
+$result = parse_tweet('Hello world こんにちは世界');
+print Dumper($result);
+# $VAR1 = {
+#       'weighted_length' => 33
+#       'permillage' => 117,
+#       'valid' => 1,
+#       'display_range_start' => 0,
+#       'display_range_end' => 32,
+#       'valid_range_start' => 0,
+#       'valid_range_end' => 32,
+#     };
+```
+
+- `weighted_length`
+- `permillage`
+- `valid`
+- `display_range_start`
+- `display_range_end`
+- `valid_range_start`
+- `valid_range_end`
+
+## 実装方針
+ 
+### 正規表現地獄
+
+TODO: 書きましょう
+
+### YAMLのパーサー
+
+TODO: 書きましょう
+
 ## おわりに
 
 いかがでしたか？
