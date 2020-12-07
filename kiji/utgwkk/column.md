@@ -70,7 +70,7 @@ validなURLであれば、長さに関係なく23文字としてカウントさ�
   - 言語組み込みの方法だけでは正しくカウントできないことがある
   - どこまでが「目に見える絵文字」なのかを正しく判定する必要がある
 
-## 公式のライブラリ
+## ツイートの文字数計算のためのライブラリ
 
 前節ではツイートの文字数計算の難しさについて、例を交えて説明しました。
 Twitter公式のシェアボタンなどを使うにあたってはこのような事情を考える必要はありませんが、たとえばユーザーが任意に設定した文言を時間指定でツイートするサービスなどを運用するにあたっては考慮しなければなりません。
@@ -95,6 +95,18 @@ Twitterは、かつてRuby on Railsで開発されていましたが、2008年�
 twitter-textのfirst commitが2010/1/16で、その時点で全コードがJVM移行されていなかったため、Rubyでのtwitter-text実装が必要だったのでしょう。
 
 [^twitter-ruby-to-jvm]: Twitterが、Ruby on RailsからJavaVMへ移行する理由 － Publickey \url{https://www.publickey1.jp/blog/11/twitterruby_on_railsjavavm.html}
+
+また、サードパーティ製のtwitter-text互換ライブラリが以下の言語で実装されています。
+
+- Swift[^twitter-text-swift]
+- Rust[^twitter-text-rust]
+- Perl[^twitter-text-perl]
+
+Rust製のライブラリは、なんとC++やPythonなどの言語向けにも使うことができるようです。
+
+[^twitter-text-swift]: \url{https://swiftpack.co/package/nysander/twitter-text}
+[^twitter-text-rust]: \url{https://crates.io/crates/twitter-text}
+[^twitter-text-perl]: \url{https://metacpan.org/pod/Twitter::Text}
 
 ## おわりに
 
