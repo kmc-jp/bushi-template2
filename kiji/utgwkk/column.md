@@ -314,6 +314,16 @@ Perl向けのYAMLをパースするライブラリとして、以下が挙げら
 
 [^validate-yml]: <https://github.com/twitter/twitter-text/blob/33169dfd33d61debdbf58dc940f5a200c06def10/conformance/validate.yml>
 
+### ドメイン名の長さ制限
+
+ブログにも書きました[^twitter-test-debug]が、ドメイン名は63文字以内でないといけません。
+普段こういうことを意識せず暮らしていたので、あるバージョンのPerlでTwitter::Textのテストが落ちるように見えていて、原因を特定するのに苦労していました。
+RFC 1034[^rfc-1034]を読むと書いてあります。
+こういうことから知恵が1つ増えるのは生きる喜びという感じがしますね。
+
+[^twitter-test-debug]: <https://blog.utgw.net/entry/2020/11/21/183736>
+[^rfc-1034]: <https://tools.ietf.org/html/rfc1034>
+
 ## おわりに
 
 Twitterのツイートの文字数を数える方法、および文字数を数えるライブラリのTwitter::Textの実装方針について紹介してきました。
