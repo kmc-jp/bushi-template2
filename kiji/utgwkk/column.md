@@ -24,7 +24,7 @@
 以下では、特に断りなく「1文字」「2文字」のように書いたときは、ツイートの長さの単位としての文字数のことだとします。
 また、「日本語で1文字」「アルファベットで1文字」のように言語名や文字種を明示したときは、ツイートの長さの単位ではなく、その文字種における文字数のことであるとします。
 
-[^twitter-counting-characters]: \url{https://developer.twitter.com/en/docs/counting-characters}
+[^twitter-counting-characters]: <https://developer.twitter.com/en/docs/counting-characters>
 
 図\ref{utgwkk:image:invalid-tweet-ihatov}は、日本語で258文字のツイートを投稿しようとしたが文字数制限を超過している様子です。
 ひらがな・カタカナ・漢字などは2文字としてカウントされるので、280文字の制限を超えてしまいます。
@@ -62,7 +62,7 @@ validなURLであれば、長さに関係なく23文字としてカウントさ�
 また、プログラミング言語によって絵文字が何文字としてカウントされるかが異なります。
 例えばJavaScriptでは `"(寿司の絵文字)".length` という式は1ではなく2を返します[^why-sushi-length-is-2]。
 
-[^why-sushi-length-is-2]: この理由については MDN などを読むか、お近くの JavaScript の達人に聞いてみてください。 \url{https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/length}
+[^why-sushi-length-is-2]: この理由については MDN などを読むか、お近くの JavaScript の達人に聞いてみてください。 <https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/length>
 
 このように、ツイートの文字数を正しく数えるのは非常に難しいということが分かります。
 
@@ -98,7 +98,7 @@ Ruby実装があるのが興味深いです。
 Twitterは、かつてRuby on Railsで開発されていましたが、2008年にJava (JVM) への移行を始めています[^twitter-ruby-to-jvm]。
 twitter-textのfirst commitが2010/1/16で、その時点で全コードがJVM移行されていなかったため、Rubyでのtwitter-text実装が必要だったのでしょう。
 
-[^twitter-ruby-to-jvm]: Twitterが、Ruby on RailsからJavaVMへ移行する理由 － Publickey \url{https://www.publickey1.jp/blog/11/twitterruby_on_railsjavavm.html}
+[^twitter-ruby-to-jvm]: Twitterが、Ruby on RailsからJavaVMへ移行する理由 － Publickey <https://www.publickey1.jp/blog/11/twitterruby_on_railsjavavm.html>
 
 また、サードパーティ製のtwitter-text互換ライブラリが以下の言語で実装されています。
 
@@ -108,9 +108,9 @@ twitter-textのfirst commitが2010/1/16で、その時点で全コードがJVM�
 
 Rust製のライブラリは、なんとC++やPythonなどの言語向けにも使うことができるようです。
 
-[^twitter-text-swift]: \url{https://swiftpack.co/package/nysander/twitter-text}
-[^twitter-text-rust]: \url{https://crates.io/crates/twitter-text}
-[^twitter-text-perl]: \url{https://metacpan.org/pod/Twitter::Text}
+[^twitter-text-swift]: <https://swiftpack.co/package/nysander/twitter-text>
+[^twitter-text-rust]: <https://crates.io/crates/twitter-text>
+[^twitter-text-perl]: <https://metacpan.org/pod/Twitter::Text>
 
 ## Twitter::Text (Perl実装) について
 
@@ -235,7 +235,7 @@ URLに対して、プロトコルを含むかどうかで条件分岐します�
 文字種ごとの重みのデータが、公式ライブラリの中に JSON 形式で提供されています[^config-json]。
 これを元に文字数を計算していけばよいです。
 
-[^config-json]: \url{https://github.com/twitter/twitter-text/blob/33169dfd33d61debdbf58dc940f5a200c06def10/config/v3.json}
+[^config-json]: <https://github.com/twitter/twitter-text/blob/33169dfd33d61debdbf58dc940f5a200c06def10/config/v3.json>
 
 ## おもしろポイント
 
@@ -247,7 +247,7 @@ Twitter::Text は、公式のtwitter-textのRuby実装をもとに移植する�
 その中で、まずはRubyの正規表現をPerlの正規表現に移植するところから始めたのですが、最初は途方に暮れました。
 おそらく部誌に正規表現を載せると何ページも埋まってしまうので載せられませんが、興味のある方は絵文字にマッチする正規表現[^regex-emoji]などを見てみてください。
 
-[^regex-emoji]: \url{https://metacpan.org/source/UTGWKK/Twitter-Text-0.07/lib%2FTwitter%2FText%2FRegexp%2FEmoji.pm}
+[^regex-emoji]: <https://metacpan.org/source/UTGWKK/Twitter-Text-0.07/lib%2FTwitter%2FText%2FRegexp%2FEmoji.pm>
 
 ISUCON10本戦だったと思うのですが、「SQLで書いてあると移植が容易[^sql-youi]」という話を思い出しました。
 正規表現についても同様のことが言えるのではないでしょうか。
@@ -273,7 +273,7 @@ ISUCON10本戦だったと思うのですが、「SQLで書いてあると移植
 この他にも、Perlにはさまざまな特殊変数があります。
 興味がある方はperldoc perlvar[^perldoc-perlvar]を読んでみてください。
 
-[^perldoc-perlvar]: \url{https://perldoc.perl.org/perlvar}
+[^perldoc-perlvar]: <https://perldoc.perl.org/perlvar>
 
 ### YAMLのパーサー
 
