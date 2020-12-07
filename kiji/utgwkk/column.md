@@ -255,7 +255,7 @@ Twitter::Text は、公式のtwitter-textのRuby実装をもとに移植する�
 
 [^regex-emoji]: <https://metacpan.org/source/UTGWKK/Twitter-Text-0.07/lib%2FTwitter%2FText%2FRegexp%2FEmoji.pm>
 
-ISUCON10本戦だったと思うのですが、「SQLで書いてあると移植が容易[^sql-youi]」という話を思い出しました。
+ISUCON10本戦だったと思うのですが、誰かが「SQLで書いてあると移植が容易[^sql-youi]」という発言をしていたのを思い出しました。
 正規表現についても同様のことが言えるのではないでしょうか。
 
 [^sql-youi]: 可読性があるとは言ってない。
