@@ -188,14 +188,17 @@ while ($text =~ /($Twitter::Text::Regexp::valid_url)/g) {
 
 ```perl
 our $valid_url = qr{
-  (                                                             # $1 正規表現全体
-    ($valid_url_preceding_chars)                                # $2 URLの直前の文字列
-    (                                                           # $3 URL
-      (https?:\/\/)?                                            # $4 プロトコル (optional)
-      ($valid_domain)                                           # $5 ドメイン
-      (?::($valid_port_number))?                                # $6 ポート番号 (optional)
-      (/$valid_url_path*)?                                      # $7 パス
-      (\?$valid_url_query_chars*$valid_url_query_ending_chars)? # $8 クエリ文字列
+  (                                    # $1 正規表現全体
+    ($valid_url_preceding_chars)       # $2 URLの直前の文字列
+    (                                  # $3 URL
+      (https?:\/\/)?                   # $4 プロトコル (optional)
+      ($valid_domain)                  # $5 ドメイン
+      (?::($valid_port_number))?       # $6 ポート番号 (optional)
+      (/$valid_url_path*)?             # $7 パス
+      (\?                              # $8 クエリ文字列
+        $valid_url_query_chars*
+        $valid_url_query_ending_chars
+      )?
     )
   )}ix;
 ```
