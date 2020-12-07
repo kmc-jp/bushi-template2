@@ -115,6 +115,7 @@ Rust製のライブラリは、なんとC++やPythonなどの言語向けにも�
 ## Twitter::Text (Perl実装) について
 
 さて、先日、先述したPerl向けのtwitter-textライブラリ Twitter::Text を実装・公開しました。
+ここからようやく本題に入ります。
 以下のように、`parse_tweet` という関数を呼び出すことで、与えられた文字列がツイートとしてvalidかどうか、などを解析した結果のハッシュリファレンス[^hashref]を返します。
 
 [^hashref]: ここではPythonでいう辞書 (dict) やRubyでいうHashのようなものだと思ってください。
