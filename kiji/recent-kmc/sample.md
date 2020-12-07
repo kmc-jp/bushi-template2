@@ -4,4 +4,4 @@
 
 この部誌を作るプロジェクトです！
 
-![](images/katsudou.jpg){ width=50mm height=40mm }
+![](images/katsudou.jpg){ width=120mm  }
