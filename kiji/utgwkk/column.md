@@ -280,6 +280,11 @@ ISUCON10本戦だったと思うのですが、「SQLで書いてあると移植
 
 ### YAMLのパーサー
 
+公式のtwitter-textには、TLD一覧やテストケースがYAML形式で同梱されています[^conformance]。
+したがって、正常に動作させるには、また正常に動作することを確かめるにはYAMLをパースする必要があります。
+
+[^conformance]: https://github.com/twitter/twitter-text/tree/33169dfd33d61debdbf58dc940f5a200c06def10/conformance
+
 Perl向けのYAMLをパースするライブラリとして、以下が挙げられますが、それぞれパースできるYAMLの構文が異なります。
 
 - YAML[^cpan-yaml]
