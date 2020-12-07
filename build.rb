@@ -19,6 +19,7 @@ Dir.glob('kiji/**/*') do |file|
   if FileTest.file? file then
     outfile = file.sub(/^kiji\//, '').sub(/.md$/, '.tex')
     system("#{PANDOC} -o out/#{outfile} #{file}")
+    puts $? if $?
   end
 end
 
@@ -26,5 +27,6 @@ end
 FileUtils.cp("bushi.tex", "out/bushi.tex")
 FileUtils.cd("out") do
   system("latexmk -lualatex bushi.tex")
+  puts $? if $?
 end
 
