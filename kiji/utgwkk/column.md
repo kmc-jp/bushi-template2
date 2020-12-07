@@ -235,7 +235,7 @@ URLに対して、プロトコルを含むかどうかで条件分岐します�
 文字種ごとの重みのデータが、公式ライブラリの中に JSON 形式で提供されています[^config-json]。
 これを元に文字数を計算していけばよいです。
 
-[^config-json]: \url{https://github.com/twitter/twitter-text/blob/33169dfd33d61debdbf58dc940f5a200c06def10/config/v3.json#L1}
+[^config-json]: \url{https://github.com/twitter/twitter-text/blob/33169dfd33d61debdbf58dc940f5a200c06def10/config/v3.json}
 
 ## おもしろポイント
 
