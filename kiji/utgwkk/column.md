@@ -316,3 +316,7 @@ Twitterのツイートの文字数を数える方法、および文字数を数�
 ツイートのバリデーションが難しいということが分かっていただければ本望です。
 
 なにか意見などありましたらTwitterで \@utgwkk までメンションなどよろしくお願いします。
+また、issueやPull Requestも歓迎です。
+GitHubリポジトリ[^github-repo]までよろしくお願いします。
+
+[^github-repo]: <https://github.com/utgwkk/Twitter-Text>
