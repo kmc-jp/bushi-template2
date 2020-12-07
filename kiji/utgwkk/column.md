@@ -166,6 +166,55 @@ print Dumper($result);
 
 ### URLを抽出する
 
+validなURLは23文字としてカウントされるので、URLがツイートのどこにあるかを特定しなければなりません。
+URLを抽出する関数 `extract_urls_with_indices` の実装を見ていきます。
+
+まず、validなURLにマッチする箇所を抽出していきます。
+以下のように、正規表現マッチに対して `while` ループを行うことで、validなURLの正規表現にマッチする箇所を抽出してループを回すことができます。
+
+```perl
+while ($text =~ /($Twitter::Text::Regexp::valid_url)/g) {
+    my $before   = $3;
+    my $url      = $4;
+    my $protocol = $5;
+    my $domain   = $6;
+    my $path     = $8;
+    my ($start, $end) = ($-[4], $+[4]);
+```
+
+ここで `$Twitter::Text::Regexp::valid_url` は以下のように定義されます。
+この正規表現全体を `()` で囲んで、それぞれの括弧で囲まれたグループを `$3` といった特殊変数で参照しています。
+`$Twitter::Text::Regexp::valid_url` を更に括弧で囲んでいるので、以下のコメントにある特殊変数の番号が1つずつ増えています。
+
+```perl
+our $valid_url = qr{
+  (                                                             # $1 正規表現全体
+    ($valid_url_preceding_chars)                                # $2 URLの直前の文字列
+    (                                                           # $3 URL
+      (https?:\/\/)?                                            # $4 プロトコル (optional)
+      ($valid_domain)                                           # $5 ドメイン
+      (?::($valid_port_number))?                                # $6 ポート番号 (optional)
+      (/$valid_url_path*)?                                      # $7 パス
+      (\?$valid_url_query_chars*$valid_url_query_ending_chars)? # $8 クエリ文字列
+    )
+  )}ix;
+```
+
+URLに対して、プロトコルを含むかどうかで条件分岐します。
+
+まずはプロトコルがない場合の処理です。
+この場合は、ドメイン名がASCII文字列のみで構成されるURLをvalidなものとして抽出していきます。
+
+次に、プロトコルがある場合です。
+このとき、`t.co` [^t-co]のURLである場合は、さらにパス部分の長さが一定以下であるものだけをvalidだとして抽出します。
+`t.co` のURLでなければ、ドメインがvalidかどうかを見て抽出します。
+
+[^t-co]: Twitterの短縮URLサービス。
+
+以上の規則でURLを抽出して、配列リファレンス[^arrayref]として返します。
+
+[^arrayref]: Pythonのリスト型やRubyのArrayだと思ってください。
+
 TODO: 書きましょう
 
 ### 絵文字を抽出する
