@@ -300,6 +300,13 @@ Perl向けのYAMLをパースするライブラリとして、以下が挙げら
 そのため、文字列を正規表現で置換して `eval` することでコードポイントから文字列に変換していました。
 今はYAML::PPを採用しているので、そのような処理は行っていません。
 
+### 圧巻のテストケース
+
+テストケースのYAML[^validate-yml]は一見の価値があります。
+実際にツイート欄に貼り付けて、本当にツイートできるかどうか確かめてみるのもよいでしょう。
+
+[^validate-yml]: <https://github.com/twitter/twitter-text/blob/33169dfd33d61debdbf58dc940f5a200c06def10/conformance/validate.yml>
+
 ## おわりに
 
 Twitterのツイートの文字数を数える方法、および文字数を数えるライブラリのTwitter::Textの実装方針について紹介してきました。
