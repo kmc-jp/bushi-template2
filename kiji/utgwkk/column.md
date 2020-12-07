@@ -282,9 +282,13 @@ ISUCON10本戦だったと思うのですが、「SQLで書いてあると移植
 
 Perl向けのYAMLをパースするライブラリとして、以下が挙げられますが、それぞれパースできるYAMLの構文が異なります。
 
-- YAML
-- YAML::PP
-- YAML::Tiny
+- YAML[^cpan-yaml]
+- YAML::PP[^cpan-yaml-pp]
+- YAML::Tiny[^cpan-yaml-tiny]
+
+[^cpan-yaml]: <https://metacpan.org/pod/YAML>
+[^cpan-yaml-pp]: <https://metacpan.org/pod/YAML::PP>
+[^cpan-yaml-tiny]: <https://metacpan.org/pod/YAML::Tiny>
 
 とくにYAML::Tinyは、実装が軽いのですが、うまくパースできないYAMLの構文があります。
 当初はYAML::Tinyを採用していて、`\xXXXX` のようなUnicodeの文字を表すリテラルがパースできずに困っていたのですが、文字列を正規表現で置換して `eval` することでコードポイント→文字列に変換してなんとかしていました。
