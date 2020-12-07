@@ -102,6 +102,7 @@ dynamoDBにraspberry piから送信するためにlambda/api gatewayを利用。
 ## AHT10
 
 実はUARTではなくI^2^Cで話すというだけで、co2の時とほとんど同じです。
+こっちのほうが1ドル程度で売っていたセンサです。
 取得するコードもRaspberry Piののフォーラムにあったのを出力だけ整形しただけのものを動かしています^[<https://www.raspberrypi.org/forums/viewtopic.php?t=265734#p1615428> temperatureを扱うコードの上でtemporaryをtmpって略さないでほしい。動いてるのは偉いですが……。]。
 
 これについても較正の問題がありますが、タニタの温度計TT-580を横に置いて値の変化を見たらそれっぽいのでヨシとしました。
@@ -122,11 +123,13 @@ https://github.com/nna774/nanami-dashboard ダッシュボードとして表示�
 
 ## さいごに
 
-https://scrapbox.io/rebuild-kitashirakawa/MH-Z19B%E3%81%A7%E8%87%AA%E5%AE%85%E3%81%AECO2%E6%BF%83%E5%BA%A6%E3%82%92%E6%B8%AC%E5%AE%9A%E3%81%99%E3%82%8B%E3%80%82
+実はこれは
+<https://scrapbox.io/rebuild-kitashirakawa/MH-Z19Bで自宅のCO2濃度を測定する。>
 と
-https://scrapbox.io/rebuild-kitashirakawa/AHT10
-も参考に
+<https://scrapbox.io/rebuild-kitashirakawa/AHT10>
+にて既に軽くは書いていたので、細かなコード等はそちらもぜひ参照ください。
 
-おもしろいセンサみつけたらどんどん買っていきたーい。
-アリエクでのかいものはたのしい！
+届かなかったり壊れていたりしていることがあってもAliExpressでの買い物は楽しいので、これからもおもしろそうなセンサをみつけたら買って試していきたいと思います。
+みなさんもぜひお家にあるRaspberry Piにおもしろそうなセンサをつけていろんな値を測定してみてください。
+
 らむだべんり
