@@ -111,7 +111,9 @@ Rust製のライブラリは、なんとC++やPythonなどの言語向けにも�
 ## Twitter::Text (Perl実装) について
 
 さて、先日、先述したPerl向けのtwitter-textライブラリ Twitter::Text を実装・公開しました。
-以下のようにして、与えられた文字列がツイートとしてvalidかどうか、などを解析してくれます。
+以下のように、`parse_tweet` という関数を呼び出すことで、与えられた文字列がツイートとしてvalidかどうか、などを解析した結果のハッシュリファレンス[^hashref]を返します。
+
+[^hashref]: ここではPythonでいう辞書 (dict) やRubyでいうHashのようなものだと思ってください。
 
 ```perl
 use Data::Dumper;
@@ -130,13 +132,22 @@ print Dumper($result);
 #     };
 ```
 
+ハッシュリファレンスは、以下のキーで解析結果の値を持っています。
+
 - `weighted_length`
+  - ツイートの文字数を表します。
 - `permillage`
+  - ツイートの文字数上限に対する千分率です。
 - `valid`
+  - ツイートがvalidかどうかを表す真偽値です。文字数制限のほかに、ツイートに含めれない文字が含まれているかどうかによって値が変わります。
 - `display_range_start`
+  - 表示される文字列範囲の始点を表します。常に0を返します。
 - `display_range_end`
+  - 表示される文字列範囲の終点を表します。
 - `valid_range_start`
+  - ツイートとしてvalidな文字列範囲の始点を表します。常に0を返します。
 - `valid_range_end`
+  - ツイートとしてvalidな文字列範囲の終点を表します。`display_range_end` からこの値を引くと、ツイートをvalidにするために何文字削ればよいかが計算できます。
 
 ## 実装方針
  
