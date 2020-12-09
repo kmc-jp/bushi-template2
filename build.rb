@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'fileutils'
 # pandocのオプションを設定
-PANDOC='pandoc -f markdown+east_asian_line_breaks -t latex -N --pdf-engine=lualatex --filter pandoc-citeproc --top-level-division=chapter --table-of-contents --toc-depth=3'
+PANDOC='pandoc -f markdown+east_asian_line_breaks -t latex -N --pdf-engine=lualatex --top-level-division=chapter --table-of-contents --toc-depth=3'
 
 # kijiの中身を雑にoutにコピー（ディレクトリつくるのめんどいので）
 Dir.glob('kiji/*') do |file|
