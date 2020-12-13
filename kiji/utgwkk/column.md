@@ -67,7 +67,7 @@ validなURLであれば、長さに関係なく23文字としてカウントさ�
 これらの「文字」によって構成された「目に見える絵文字」1文字が2文字としてカウントされます。ゼロ幅接合子がなければ、それぞれの家族が独立した「目に見える絵文字」になるので、8文字とカウントされます。
 
 また、プログラミング言語によって絵文字が何文字としてカウントされるかが異なります。
-例えばJavaScriptでは `"(寿司の絵文字)".length` という式は1ではなく2を返します[^why-sushi-length-is-2]。
+例えばJavaScriptでは\ `"`![🍣](./image/emoji-sushi.png){ height=10pt }`".length` という式は1ではなく2を返します[^why-sushi-length-is-2]。<!-- "🍣".length の直前が詰まりすぎてるように感じるのでスペースを入れる -->
 
 [^why-sushi-length-is-2]: この理由については MDN などを読むか、お近くの JavaScript の達人に聞いてみてください。 <https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/length>
 
