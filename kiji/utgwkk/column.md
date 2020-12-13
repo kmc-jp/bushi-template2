@@ -261,7 +261,7 @@ Twitter::Text は、公式のtwitter-textのRuby実装をもとに移植する�
 おそらく部誌に正規表現を載せると何ページも埋まってしまうので載せられませんが、興味のある方は絵文字にマッチする正規表現[^regex-emoji]などを見てみてください。
 validなURLにマッチする正規表現も、物量こそ絵文字のそれには劣りますが、なかなか圧巻でした。
 
-[^regex-emoji]: <https://metacpan.org/source/UTGWKK/Twitter-Text-0.07/lib%2FTwitter%2FText%2FRegexp%2FEmoji.pm>
+[^regex-emoji]: <https://metacpan.org/source/UTGWKK/Twitter-Text-0.07/lib/Twitter/Text/Regexp/Emoji.pm>
 
 ISUCON10本戦だったと思うのですが、誰かが「SQLで書いてあると移植が容易[^sql-youi]」という発言をしていたのを思い出しました。
 正規表現についても同様のことが言えるのではないでしょうか。
