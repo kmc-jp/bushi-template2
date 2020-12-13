@@ -31,13 +31,13 @@
 
 [^twitter-counting-characters]: <https://developer.twitter.com/en/docs/counting-characters>
 
-図\ref{utgwkk:image:invalid-tweet-ihatov}は、日本語で258文字のツイートを投稿しようとしたが文字数制限を超過している様子です。
+図\ref{utgwkk:image:invalid-tweet-ja}は、日本語で213文字のツイートを投稿しようとしたが文字数制限を超過している様子です。
 ひらがな・カタカナ・漢字などは2文字としてカウントされるので、280文字の制限を超えてしまいます。
 
-![ツイート長の制限を超過している (日本語で258文字)\label{utgwkk:image:invalid-tweet-ihatov}](./image/invalid-tweet-ihatov.png){ width=12cm }
+![ツイート長の制限を超過している (日本語で213文字)\label{utgwkk:image:invalid-tweet-ja}](./image/invalid-tweet-no-longer-human.png){ width=12cm }
 
 アルファベットで231文字のツイートを投稿しようとしている様子を図\ref{utgwkk:image:valid-tweet-lorem-ipsum}に示します。
-アルファベットは1文字としてカウントされるので、日本語で258文字のツイートとは異なり文字数制限を超過していません。
+アルファベットは1文字としてカウントされるので、日本語で213文字のツイートとは異なり文字数制限を超過していません。
 
 ![ツイート長の制限を超過していない (アルファベットで231文字)\label{utgwkk:image:valid-tweet-lorem-ipsum}](./image/valid-tweet-lorem-ipsum.png){ width=12cm }
 
