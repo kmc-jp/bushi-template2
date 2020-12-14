@@ -245,7 +245,7 @@ our $valid_url = qr{
 あとは、URLと絵文字以外の箇所を1文字ずつ読んで、重みを踏まえつつ文字数を計算するだけです。
 ただし、ツイートに含められない文字というものがあるので、それが出現したらただちにツイートとしてinvalidであると判定する必要があります。
 
-文字種ごとの重みのデータが、公式ライブラリの中に JSON 形式で提供されています[^config-json]。
+文字種ごとの重みのデータが、公式ライブラリに JSON 形式で同梱されています[^config-json]。
 これを元に文字数を計算していけばよいです。
 
 [^config-json]: <https://github.com/twitter/twitter-text/blob/33169dfd33d61debdbf58dc940f5a200c06def10/config/v3.json>
