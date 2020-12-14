@@ -116,6 +116,7 @@ twitter-textのfirst commitが2010/1/16で、その時点で全コードがJVM�
 - Perl[^twitter-text-perl]
 
 Rust製のライブラリは、なんとC++やPythonなどの言語向けにも使うことができるようです。
+ヤバいですね！
 
 [^twitter-text-swift]: <https://swiftpack.co/package/nysander/twitter-text>
 [^twitter-text-rust]: <https://crates.io/crates/twitter-text>
