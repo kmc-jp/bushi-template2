@@ -31,13 +31,13 @@
 
 [^twitter-counting-characters]: <https://developer.twitter.com/en/docs/counting-characters>
 
-図\ref{utgwkk:image:invalid-tweet-ihatov}は、日本語で258文字のツイートを投稿しようとしたが文字数制限を超過している様子です。
+図\ref{utgwkk:image:invalid-tweet-ja}は、日本語で213文字のツイートを投稿しようとしたが文字数制限を超過している様子です。
 ひらがな・カタカナ・漢字などは2文字としてカウントされるので、280文字の制限を超えてしまいます。
 
-![ツイート長の制限を超過している (日本語で258文字)\label{utgwkk:image:invalid-tweet-ihatov}](./image/invalid-tweet-ihatov.png){ width=12cm }
+![ツイート長の制限を超過している (日本語で213文字)\label{utgwkk:image:invalid-tweet-ja}](./image/invalid-tweet-no-longer-human.png){ width=12cm }
 
 アルファベットで231文字のツイートを投稿しようとしている様子を図\ref{utgwkk:image:valid-tweet-lorem-ipsum}に示します。
-アルファベットは1文字としてカウントされるので、日本語で258文字のツイートとは異なり文字数制限を超過していません。
+アルファベットは1文字としてカウントされるので、日本語で213文字のツイートとは異なり文字数制限を超過していません。
 
 ![ツイート長の制限を超過していない (アルファベットで231文字)\label{utgwkk:image:valid-tweet-lorem-ipsum}](./image/valid-tweet-lorem-ipsum.png){ width=12cm }
 
@@ -48,26 +48,26 @@ validなURLであれば、長さに関係なく23文字としてカウントさ�
 ![ツイート長の制限を超過していない (アルファベットで288文字のURL)\label{utgwkk:image:valid-tweet-long-url}](./image/valid-tweet-long-url.png){ width=12cm }
 
 絵文字は全て「目に見える絵文字」1文字が2文字とカウントされます。
-図\ref{utgwkk:image:emoji-family-man-woman-girl-boy}は、父・母・息子・娘による家族の絵文字です。
-
-![父・母・息子・娘による家族の絵文字 (Twemoji[^twemoji]) \label{utgwkk:image:emoji-family-man-woman-girl-boy}](./image/emoji-family-man-woman-girl-boy.png){ width=1.5cm }
+図\ref{utgwkk:image:emoji-family-man-woman-girl-boy}は、父・母・息子・娘による家族の絵文字 (Twemoji[^twemoji]) です。
 
 [^twemoji]: <https://twemoji.twitter.com/>
 
-この絵文字は、以下の文字によって構成されており、そして1文字としてカウントされます（括弧内はUnicodeのコードポイント）。
+![父・母・息子・娘による家族の絵文字 \label{utgwkk:image:emoji-family-man-woman-girl-boy}](./image/emoji-family-man-woman-girl-boy.png){ width=1.5cm }
 
-- 男性 (`U+1F468`)
+この絵文字は、以下の文字によって構成されており、そして2文字としてカウントされます（括弧内はUnicodeのコードポイント）。
+
+- ![👨](./image/emoji-man.png){ height=10pt } 男性 (`U+1F468`)
 - ゼロ幅接合子 (`U+200D`)
-- 女性 (`U+1F469`)
-- ゼロ幅接合子( `U+200D`)
-- 女の子 (`U+1F467`)
-- ゼロ幅接合子( `U+200D`)
-- 男の子 (`U+1F466`)
+- ![👩](./image/emoji-woman.png){ height=10pt } 女性 (`U+1F469`)
+- ゼロ幅接合子 (`U+200D`)
+- ![👧](./image/emoji-girl.png){ height=10pt } 女の子 (`U+1F467`)
+- ゼロ幅接合子 (`U+200D`)
+- ![👦](./image/emoji-boy.png){ height=10pt } 男の子 (`U+1F466`)
 
-これらの「文字」によって構成された「目に見える絵文字」が1文字としてカウントされます。ゼロ幅接合子がなければ、それぞれの家族が独立した「目に見える絵文字」になるので、4文字とカウントされます。
+これらの「文字」によって構成された「目に見える絵文字」1文字が2文字としてカウントされます。ゼロ幅接合子がなければ、それぞれの家族が独立した「目に見える絵文字」になるので、$2 \times 4 = 8$文字とカウントされます。
 
 また、プログラミング言語によって絵文字が何文字としてカウントされるかが異なります。
-例えばJavaScriptでは `"(寿司の絵文字)".length` という式は1ではなく2を返します[^why-sushi-length-is-2]。
+例えばJavaScriptでは\ `"`![🍣](./image/emoji-sushi.png){ height=10pt }`".length` という式は1ではなく2を返します[^why-sushi-length-is-2]。<!-- "🍣".length の直前が詰まりすぎてるように感じるのでスペースを入れる -->
 
 [^why-sushi-length-is-2]: この理由については MDN などを読むか、お近くの JavaScript の達人に聞いてみてください。 <https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/String/length>
 
@@ -116,6 +116,7 @@ twitter-textのfirst commitが2010/1/16で、その時点で全コードがJVM�
 - Perl[^twitter-text-perl]
 
 Rust製のライブラリは、なんとC++やPythonなどの言語向けにも使うことができるようです。
+ヤバいですね！
 
 [^twitter-text-swift]: <https://swiftpack.co/package/nysander/twitter-text>
 [^twitter-text-rust]: <https://crates.io/crates/twitter-text>
@@ -153,7 +154,7 @@ print Dumper($result);
 - `permillage`
   - ツイートの文字数上限に対する千分率です。
 - `valid`
-  - ツイートがvalidかどうかを表す真偽値です。文字数制限のほかに、ツイートに含めれない文字が含まれているかどうかによって値が変わります。
+  - ツイートがvalidかどうかを表す真偽値です。文字数制限のほかに、BOM[^bom]などツイートに含められない文字が含まれているかどうかによって値が変わります。
 - `display_range_start`
   - 表示される文字列範囲の始点を表します。常に0を返します。
 - `display_range_end`
@@ -162,6 +163,8 @@ print Dumper($result);
   - ツイートとしてvalidな文字列範囲の始点を表します。常に0を返します。
 - `valid_range_end`
   - ツイートとしてvalidな文字列範囲の終点を表します。`display_range_end` からこの値を引くと、ツイートをvalidにするために何文字削ればよいかが計算できます。
+
+[^bom]: byte order mark
 
 ## 実装方針
 
@@ -193,8 +196,11 @@ while ($text =~ /($Twitter::Text::Regexp::valid_url)/g) {
 ```
 
 ここで `$Twitter::Text::Regexp::valid_url` は以下のように定義されます。
-この正規表現全体を `()` で囲んで、それぞれの括弧で囲まれたグループにマッチした文字列を `$3` といった特殊変数で参照しています。
+この正規表現全体を `()` で囲んで、それぞれの括弧で囲まれたグループにマッチした文字列を `$3` といった特殊変数で参照しています[^group-num]。
+また、`$-[4]`, `$+[4]` でURLにマッチした箇所の開始・終了位置を取得できます。
 `$Twitter::Text::Regexp::valid_url` を更に括弧で囲んでいるので、以下のコメントにある特殊変数の番号が1つずつ増えています。
+
+[^group-num]: グループの番号は、開き括弧 `(` が最も先頭にあるものから順に 1, 2,...... と付けられます。
 
 ```perl
 our $valid_url = qr{
@@ -245,7 +251,7 @@ our $valid_url = qr{
 あとは、URLと絵文字以外の箇所を1文字ずつ読んで、重みを踏まえつつ文字数を計算するだけです。
 ただし、ツイートに含められない文字というものがあるので、それが出現したらただちにツイートとしてinvalidであると判定する必要があります。
 
-文字種ごとの重みのデータが、公式ライブラリの中に JSON 形式で提供されています[^config-json]。
+文字種ごとの重みのデータが、公式ライブラリに JSON 形式で同梱されています[^config-json]。
 これを元に文字数を計算していけばよいです。
 
 [^config-json]: <https://github.com/twitter/twitter-text/blob/33169dfd33d61debdbf58dc940f5a200c06def10/config/v3.json>
@@ -261,7 +267,7 @@ Twitter::Text は、公式のtwitter-textのRuby実装をもとに移植する�
 おそらく部誌に正規表現を載せると何ページも埋まってしまうので載せられませんが、興味のある方は絵文字にマッチする正規表現[^regex-emoji]などを見てみてください。
 validなURLにマッチする正規表現も、物量こそ絵文字のそれには劣りますが、なかなか圧巻でした。
 
-[^regex-emoji]: <https://metacpan.org/source/UTGWKK/Twitter-Text-0.07/lib%2FTwitter%2FText%2FRegexp%2FEmoji.pm>
+[^regex-emoji]: <https://metacpan.org/source/UTGWKK/Twitter-Text-0.07/lib/Twitter/Text/Regexp/Emoji.pm>
 
 ISUCON10本戦だったと思うのですが、誰かが「SQLで書いてあると移植が容易[^sql-youi]」という発言をしていたのを思い出しました。
 正規表現についても同様のことが言えるのではないでしょうか。
@@ -273,16 +279,16 @@ ISUCON10本戦だったと思うのですが、誰かが「SQLで書いてある
 正規表現マッチで文字列をパースしていくにあたって、Perlの特殊変数から逃れることはできません。
 いくつかの特殊変数について紹介します。
 
-`$1`, `$2`, ... という変数で、正規表現マッチした中のグループの1番目、2番目……の文字列を抽出できます。
-たとえば `'dog cat' =~ /([a-z]+)\s+([a-z]+)/` という式を評価した直後は `$1 = 'dog'` `$2 = 'cat'` になります。
+`$1`, `$2`,...... という変数で、正規表現マッチした中のグループの1番目、2番目、……の文字列を抽出できます。
+たとえば `'dog cat' =~ /([a-z]+)\s+([a-z]+)/` という式を評価した直後は `$1 = 'dog'`,`$2 = 'cat'` になります。
 
-`@+`, `@-` という変数で、正規表現マッチしたグループのそれぞれ開始・終了位置を取得できます。
+`@-`, `@+` という変数で、正規表現マッチしたグループのそれぞれ開始・終了位置を取得できます。
 `'dog cat' =~ /([a-z]+)\s+([a-z]+)/` の例では以下のようになります。
 
-- `$+[1] = 0`
-- `$+[2] = 4`
-- `$-[1] = 2`
-- `$-[2] = 6`
+- `$-[1] = 0`
+- `$+[1] = 2`
+- `$-[2] = 4`
+- `$+[2] = 6`
 
 この他にも、Perlにはさまざまな特殊変数があります。
 興味がある方はperldoc perlvar[^perldoc-perlvar]を読んでみてください。
@@ -294,7 +300,7 @@ ISUCON10本戦だったと思うのですが、誰かが「SQLで書いてある
 公式のtwitter-textには、TLD一覧やテストケースがYAML形式で同梱されています[^conformance]。
 したがって、正常に動作させるには、また正常に動作することを確かめるにはYAMLをパースする必要があります。
 
-[^conformance]: https://github.com/twitter/twitter-text/tree/33169dfd33d61debdbf58dc940f5a200c06def10/conformance
+[^conformance]: <https://github.com/twitter/twitter-text/tree/33169dfd33d61debdbf58dc940f5a200c06def10/conformance>
 
 Perl向けのYAMLをパースするライブラリとして、以下が挙げられますが、それぞれパースできるYAMLの構文が異なります。
 
@@ -307,7 +313,7 @@ Perl向けのYAMLをパースするライブラリとして、以下が挙げら
 [^cpan-yaml-tiny]: <https://metacpan.org/pod/YAML::Tiny>
 
 とくにYAML::Tinyは、実装が軽いのですが、うまくパースできないYAMLの構文があります。
-当初はYAML::Tinyを採用していたのですが、 `\UXXXX` のようなUnicodeの文字を表すリテラルがパースできませんでした。
+当初はYAML::Tinyを採用していたのですが、 `\uXXXX` のようなUnicodeの文字を表すリテラルがパースできませんでした。
 そのため、文字列を正規表現で置換して `eval` することでコードポイントから文字列に変換していました。
 今はYAML::PPを採用しているので、そのような処理は行っていません。
 
@@ -320,7 +326,7 @@ Perl向けのYAMLをパースするライブラリとして、以下が挙げら
 
 ### ドメイン名の長さ制限
 
-ブログにも書きました[^twitter-test-debug]が、ドメイン名は63文字以内でないといけません。
+ブログにも書きました[^twitter-test-debug]が、ドメイン名を `.` で区切ったときの各文字列は63文字以内でないといけません。
 これはRFC 1034[^rfc-1034]を読むと書いてあります。
 普段こういうことを意識せず暮らしていたので、あるバージョンのPerlでTwitter::Textのテストが落ちるように見えていて、原因を特定するのに苦労していました。
 こういうことから知恵が1つ増えるのは生きる喜びという感じがしますね。
@@ -334,7 +340,7 @@ Twitterのツイートの文字数を数える方法、および文字数を数�
 ツイートのバリデーションが難しいということが分かっていただければ本望です。
 
 なにか意見などありましたらTwitterで \@utgwkk までメンションなどよろしくお願いします。
-また、issueやPull Requestも歓迎です。
+また、IssueやPull Requestも歓迎です。
 GitHubリポジトリ[^github-repo]までよろしくお願いします。
 
 [^github-repo]: <https://github.com/utgwkk/Twitter-Text>
