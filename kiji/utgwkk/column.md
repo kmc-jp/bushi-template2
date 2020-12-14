@@ -48,11 +48,11 @@ validなURLであれば、長さに関係なく23文字としてカウントさ�
 ![ツイート長の制限を超過していない (アルファベットで288文字のURL)\label{utgwkk:image:valid-tweet-long-url}](./image/valid-tweet-long-url.png){ width=12cm }
 
 絵文字は全て「目に見える絵文字」1文字が2文字とカウントされます。
-図\ref{utgwkk:image:emoji-family-man-woman-girl-boy}は、父・母・息子・娘による家族の絵文字です。
-
-![父・母・息子・娘による家族の絵文字 (Twemoji[^twemoji]) \label{utgwkk:image:emoji-family-man-woman-girl-boy}](./image/emoji-family-man-woman-girl-boy.png){ width=1.5cm }
+図\ref{utgwkk:image:emoji-family-man-woman-girl-boy}は、父・母・息子・娘による家族の絵文字 (Twemoji[^twemoji]) です。
 
 [^twemoji]: <https://twemoji.twitter.com/>
+
+![父・母・息子・娘による家族の絵文字 \label{utgwkk:image:emoji-family-man-woman-girl-boy}](./image/emoji-family-man-woman-girl-boy.png){ width=1.5cm }
 
 この絵文字は、以下の文字によって構成されており、そして2文字としてカウントされます（括弧内はUnicodeのコードポイント）。
 
