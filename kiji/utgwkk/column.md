@@ -153,7 +153,7 @@ print Dumper($result);
 - `permillage`
   - ツイートの文字数上限に対する千分率です。
 - `valid`
-  - ツイートがvalidかどうかを表す真偽値です。文字数制限のほかに、ツイートに含められない文字が含まれているかどうかによって値が変わります。
+  - ツイートがvalidかどうかを表す真偽値です。文字数制限のほかに、BOM[^bom]などツイートに含められない文字が含まれているかどうかによって値が変わります。
 - `display_range_start`
   - 表示される文字列範囲の始点を表します。常に0を返します。
 - `display_range_end`
@@ -162,6 +162,8 @@ print Dumper($result);
   - ツイートとしてvalidな文字列範囲の始点を表します。常に0を返します。
 - `valid_range_end`
   - ツイートとしてvalidな文字列範囲の終点を表します。`display_range_end` からこの値を引くと、ツイートをvalidにするために何文字削ればよいかが計算できます。
+
+[^bom]: byte order mark
 
 ## 実装方針
 
