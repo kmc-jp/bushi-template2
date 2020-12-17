@@ -14,8 +14,11 @@
 % 画像を子ディレクトリから参照したいときは
 % \graphicspath{{hoge1/}{hoge2/}} みたいに足していってね
 \graphicspath{{./}{recent-kmc/}{utgwkk/}{nana/}}
+\usepackage{pdfpages} % \includepdfできるようにする
 
 \begin{document}
+\includepdf{air2_front_5_trim.png}
+
 \maketitle
 
 % 巻頭言
@@ -54,5 +57,7 @@ KMCでは、新入生プロジェクト以外にも様々なプロジェクト�
 \part{部員のコラム}
 \include{utgwkk/column}
 \include{nana/row}
-\include{kousei} % 最初の章だけこうやって include* する。以降は普通のinclude
+\include{kousei}
+
+\includepdf{air2_back_trim.png}
 \end{document}

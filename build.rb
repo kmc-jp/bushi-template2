@@ -8,6 +8,11 @@ Dir.glob('kiji/*') do |file|
   FileUtils.cp_r(file, 'out')
 end
 
+# カバー画像もoutにコピー
+Dir.glob('cover/*.png') do |file|
+  FileUtils.cp_r(file, 'out')
+end
+
 # クラスファイルを生成
 system("lualatex luakmcbook.ins")
 
