@@ -1,4 +1,4 @@
-\sectionauthor[lv100]{lv100}
+\sectionauthor[Clocklock開発チーム]{Clocklock開発チーム}
 
 ## Clocklock
 
