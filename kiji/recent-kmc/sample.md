@@ -1,3 +1,5 @@
+\sectionauthor[KMC]{KMC}
+
 ## 部誌2020
 
 ！サンプル！
