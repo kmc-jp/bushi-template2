@@ -1,4 +1,4 @@
-FROM arch-texlive-ja
+FROM ghcr.io/kmc-jp/arch-texlive-ja:latest
 
 RUN pacman -Sy --noconfirm && \
 	pacman -S --noconfirm ruby pandoc adobe-source-sans-fonts
