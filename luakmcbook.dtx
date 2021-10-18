@@ -69,9 +69,16 @@
 % 改頁なしのinclude等を提供
 \usepackage{newclude}
 
+% 絵文字を直接タイプセットしたいので
+\directlua{luaotfload.add_fallback
+  ("emojifallback", {
+    "NotoColorEmoji:mode=harf;"
+  })
+}
+
 % 欧文フォントを変更
 \usepackage{fontspec}
-\setmainfont[Scale=1]{Linux Libertine O} % セリフ体
+\setmainfont[Scale=1, RawFeature={fallback=emojifallback}]{Linux Libertine O} % セリフ体と絵文字
 \setsansfont[Scale=1.05]{Source Sans Pro} % サンセリフ体
 
 % 校正規約はこれがないと組めなかった
