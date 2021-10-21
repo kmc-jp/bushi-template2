@@ -23,8 +23,10 @@ system("lualatex luakmcbook.ins")
 Dir.glob('kiji/**/*') do |file|
   if FileTest.file? file then
     outfile = file.sub(/^kiji\//, '').sub(/.md$/, '.tex')
-    system("#{PANDOC} -o out/#{outfile} #{file}")
-    puts $? if $?
+    cmd = "#{PANDOC} -o out/#{outfile} #{file}"
+    puts "exec: #{cmd}"
+    system(cmd)
+    puts "exit code: #{$?}" if $?
   end
 end
 
