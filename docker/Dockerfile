@@ -1,8 +1,9 @@
-FROM ghcr.io/kmc-jp/arch-texlive-ja:latest
+FROM ghcr.io/paperist/texlive-ja:debian
 
-RUN pacman -Sy --noconfirm && \
-	pacman -S --noconfirm \
-	ruby pandoc adobe-source-sans-fonts noto-fonts-emoji adobe-source-code-pro-fonts
+RUN apt-get install -y \
+	ruby \
+	pandoc \
+	fonts-noto-cjk-extra fonts-noto-color-emoji
 
 RUN tlmgr update --self
 RUN tlmgr install adfsymbols ulem lualatex-math
