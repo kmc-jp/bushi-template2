@@ -1,9 +1,11 @@
 FROM ghcr.io/paperist/texlive-ja:debian
 
-RUN apt-get install -y \
+RUN apt-get update \
+	&& apt-get install -y \
 	ruby \
 	pandoc \
-	fonts-noto-cjk-extra fonts-noto-color-emoji
+	fonts-noto-cjk-extra fonts-noto-color-emoji \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN tlmgr update --self
 RUN tlmgr install adfsymbols ulem lualatex-math
