@@ -22,8 +22,8 @@ system("lualatex luakmcbook.ins")
 # MarkdownをTeXに変換
 Dir.glob('kiji/**/*') do |file|
   if FileTest.file? file then
-    next if file =~ /.md$/
-    outfile = file.sub(/^kiji\//, '').sub(/.md$/, '.tex')
+    next unless file =~ /\.md$/
+    outfile = file.sub(/^kiji\//, '').sub(/\.md$/, '.tex')
     cmd = "#{PANDOC} -o out/#{outfile} #{file}"
     puts "exec: #{cmd}"
     system(cmd)
