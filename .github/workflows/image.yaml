@@ -1,4 +1,4 @@
-name: build bushi
+name: build and push bushi build image
 on:
   push:
     tags:
