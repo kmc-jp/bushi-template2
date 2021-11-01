@@ -9,13 +9,30 @@ Xで出す部誌のリポジトリ
 ----
 
 # タイプセットする方法
-TODO: dockerを使ったタイプセットの説明を書く
+dockerだと
+```
+docker run --mount type=bind,source="$(pwd)",target=/workdir ghcr.io/kmc-jp/bushi-build-image:latest
+```
 
+そうでない時は単に
 ```
 $ ruby build.rb
 ```
 
 - TeXLive, ruby, pandoc(ver. 2)のインストールが必要です
+
+## dockerのimageの更新方法
+.github/workflows/image.yaml でimageを作成しています。
+`image/` から始まるtagをpushすると自動で作成されます。
+
+forkした先でtagをpushしても動作するとは思いますが、
+ややこしいので https://github.com/kmc-jp/bushi-template2 へのtagのpushで作成して欲しいです。
+
+https://github.com/kmc-jp/bushi-template2/pkgs/container/bushi-build-image にimageのリストがあります。
+
+## 記事のタグ
+.github/workflows/release.yaml で `kiji/` から始まるタグがpushされた際にreleaseを作成しています。
+こちらは、imageとは異なり、fork先のレポジトリでリリース版を作成する時とかに使うことを想定しています。
 
 # 記事を書く人へ
 記事はMarkdown形式で書いてください。
