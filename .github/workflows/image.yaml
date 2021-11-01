@@ -2,7 +2,7 @@ name: build and push bushi build image
 on:
   push:
     tags:
-      - '*'
+      - 'image/*'
 jobs:
   build:
     runs-on: ubuntu-latest
