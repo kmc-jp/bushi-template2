@@ -4,7 +4,6 @@ RUN apt-get update \
 	&& apt-get install -y \
 	ruby \
 	fontconfig \
-	pandoc \
 	fonts-noto-cjk-extra fonts-noto-color-emoji \
 	xz-utils \
 	&& rm -rf /var/lib/apt/lists/*
@@ -20,6 +19,11 @@ RUN mkdir -p /usr/local/share/fonts/ \
 	&& unzip /tmp/SourceHanSansJP.zip \
 	&& mv /tmp/SubsetOTF/JP/*.otf /usr/local/share/fonts/ \
 	&& fc-cache \
+	&& rm -rf /tmp/*
+
+RUN cd /tmp \
+	&& wget https://github.com/jgm/pandoc/releases/download/2.16/pandoc-2.16-1-amd64.deb -O pandoc.deb \
+	&& dpkg -i pandoc.deb \
 	&& rm -rf /tmp/*
 
 RUN cd /tmp \
