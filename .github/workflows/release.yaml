@@ -1,0 +1,36 @@
+name: build bushi and make release on tag pushed
+on:
+  push:
+    tags:
+      - 'kiji/*'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get tag
+        id: variables
+        run: echo "::set-output name=tag::${GITHUB_REF##*/}"
+      - name: Check out the repo
+        uses: actions/checkout@v2
+      - name: build pdf
+        run: docker run --mount type=bind,source="$(pwd)",target=/workdir ghcr.io/kmc-jp/bushi-build-image:latest
+      - name: save log
+        uses: actions/upload-artifact@v2
+        with:
+          name: log
+          path: out/*.log
+      - name: save artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: bushi.pdf
+          path: out/bushi.pdf
+          if-no-files-found: error
+      - name: create release
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${{ steps.variables.outputs.tag }}
+          prerelease: false
+          title: ${{ steps.variables.outputs.tag }}
+          files: |
+            out/bushi.pdf
