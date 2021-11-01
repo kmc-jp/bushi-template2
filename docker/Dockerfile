@@ -6,6 +6,7 @@ RUN apt-get update \
 	fontconfig \
 	pandoc \
 	fonts-noto-cjk-extra fonts-noto-color-emoji \
+	xz-utils \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/local/share/fonts/ \
