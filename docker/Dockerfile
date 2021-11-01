@@ -21,6 +21,13 @@ RUN mkdir -p /usr/local/share/fonts/ \
 	&& fc-cache \
 	&& rm -rf /tmp/*
 
+RUN cd /tmp \
+	&& wget https://github.com/lierdakil/pandoc-crossref/releases/download/v0.3.12.0d/pandoc-crossref-Linux.tar.xz -O pandoc-crossref-Linux.tar.xz \
+	&& tar xf pandoc-crossref-Linux.tar.xz \
+	&& chmod +x pandoc-crossref \
+	&& mv pandoc-crossref /usr/local/bin \
+	&& rm -rf /tmp/*
+
 RUN tlmgr update --self
 RUN tlmgr install adfsymbols ulem lualatex-math
 
