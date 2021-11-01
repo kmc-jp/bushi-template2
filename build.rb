@@ -28,6 +28,7 @@ Dir.glob('kiji/**/*') do |file|
     puts "exec: #{cmd}"
     system(cmd)
     puts "exit code: #{$?}" if $?
+    exit $? if $?.to_i > 0
   end
 end
 
@@ -36,5 +37,6 @@ FileUtils.cp("bushi.tex", "out/bushi.tex")
 FileUtils.cd("out") do
   system("latexmk -lualatex bushi.tex")
   puts $? if $?
+  exit $? if $?.to_i > 0
 end
 
