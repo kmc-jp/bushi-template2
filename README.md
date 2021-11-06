@@ -21,6 +21,14 @@ $ ruby build.rb
 
 - TeXLive, ruby, pandoc(ver. 2)のインストールが必要です
 
+## CIによるタイプセット
+レポジトリにpushすると、CIによりタイプセットが行なわれて、pdfが自動で生成されます。
+正常にタイプセットできた場合、GitHub Actionsのrun結果のページを開くと、
+artifactにbushi.pdfという項目があります。
+[![Image from Gyazo](https://i.gyazo.com/9cc637c1b1db1eff9e169585df6fcaca.png)](https://gyazo.com/9cc637c1b1db1eff9e169585df6fcaca)
+
+これは、.github/workflows/build.yamlにて行なっています。
+
 ## dockerのimageの更新方法
 .github/workflows/image.yaml でimageを作成しています。
 `image/` から始まるtagをpushすると自動で作成されます。
