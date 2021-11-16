@@ -22,9 +22,13 @@ system("lualatex luakmcbook.ins")
 # MarkdownをTeXに変換
 Dir.glob('kiji/**/*') do |file|
   if FileTest.file? file then
-    outfile = file.sub(/^kiji\//, '').sub(/.md$/, '.tex')
-    system("#{PANDOC} -o out/#{outfile} #{file}")
-    puts $? if $?
+    next unless file =~ /\.md$/
+    outfile = file.sub(/^kiji\//, '').sub(/\.md$/, '.tex')
+    cmd = "#{PANDOC} -o out/#{outfile} #{file}"
+    puts "exec: #{cmd}"
+    system(cmd)
+    puts "exit code: #{$?}" if $?
+    exit $? if $?.to_i > 0
   end
 end
 
@@ -33,5 +37,6 @@ FileUtils.cp("bushi.tex", "out/bushi.tex")
 FileUtils.cd("out") do
   system("latexmk -lualatex bushi.tex")
   puts $? if $?
+  exit $? if $?.to_i > 0
 end
 
