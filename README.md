@@ -39,7 +39,7 @@ forkした先でtagをpushしても動作するとは思いますが、
 https://github.com/kmc-jp/bushi-template2/pkgs/container/bushi-build-image にimageのリストがあります。
 
 ## 記事のタグ
-.github/workflows/release.yaml で `kiji/` から始まるタグがpushされた際にreleaseを作成しています。
+.github/workflows/release.yaml で `rel/` から始まるタグがpushされた際にreleaseを作成しています。
 こちらは、imageとは異なり、fork先のレポジトリでリリース版を作成する時とかに使うことを想定しています。
 
 # 記事を書く人へ

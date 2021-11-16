@@ -2,7 +2,7 @@ name: build bushi and make release on tag pushed
 on:
   push:
     tags:
-      - 'kiji/*'
+      - 'rel/*'
 jobs:
   build:
     runs-on: ubuntu-latest
