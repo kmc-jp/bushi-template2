@@ -21,6 +21,12 @@
 
 \maketitle
 
+\makeatletter
+%% リンク先のURLを脚注に表示する
+\let\href@orig\href
+\renewcommand{\href}[2]{\href@orig{#1}{#2}\footnote{\url{#1}}}
+\makeatother
+
 % 巻頭言
 \include{preface}
 
@@ -58,6 +64,11 @@ KMCでは、新入生プロジェクト以外にも様々なプロジェクト�
 \include{atogaki}
 
 %\include{kousei}
+
+\makeatletter
+%% 奥付のリンクは脚注をつけない（\hrefをオリジナルの挙動に戻す）
+\let\href\href@orig
+\makeatother
 
 % 奥付ここから
 \null\vfill
