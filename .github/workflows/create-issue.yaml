@@ -1,0 +1,27 @@
+name: create template issue
+on:
+  - push
+permissions:
+  contents: read
+  issues: write 
+jobs:
+  create-template-issue:
+    strategy:
+      matrix:
+        # .github/template/以下のMarkdownファイルのファイル名を列挙（拡張子なし）
+        filename: ["front-title", "pop-title"]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Get commit count
+        run: echo "COMMIT_COUNT=$(git log --pretty=format:"%H" | wc -l)" >> $GITHUB_ENV
+      - name: Create template issue
+        # テンプレートから引っ張ってきた初回時のみ発火させる
+        # git logの出力終端の都合でコミット数が1のときはwc -lが0になる
+        if: env.COMMIT_COUNT == 0
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/template/${{ matrix.filename }}.md
