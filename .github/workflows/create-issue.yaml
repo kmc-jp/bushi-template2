@@ -14,14 +14,16 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+        # 直前の2コミットが読めれば十分
         with:
-          fetch-depth: 0
-      - name: Get commit count
-        run: echo "COMMIT_COUNT=$(git log --pretty=format:"%H" | wc -l)" >> $GITHUB_ENV
+          fetch-depth: 2
+      - name: Get all parents
+        # https://git-scm.com/docs/git-rev-parse#_other_rev_parent_shorthand_notations
+        run: echo "ALL_PARENT=$(git rev-parse HEAD^@)" >> $GITHUB_ENV
       - name: Create template issue
         # テンプレートから引っ張ってきた初回時のみ発火させる
-        # git logの出力終端の都合でコミット数が1のときはwc -lが0になる
-        if: env.COMMIT_COUNT == 0
+        # git rev-parse HEAD^@は親がない場合（最初のコミットの場合）空白となり、それ以外は最初のコミットを指す
+        if: env.ALL_PARENT == ""
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
