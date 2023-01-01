@@ -23,7 +23,7 @@ jobs:
       - name: Create template issue
         # テンプレートから引っ張ってきた初回時のみ発火させる
         # git rev-parse HEAD^@は親がない場合（最初のコミットの場合）空白となり、それ以外は最初のコミットを指す
-        if: env.ALL_PARENT == ""
+        if: env.ALL_PARENT == ''
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
