@@ -14,9 +14,6 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
-        # 直前の2コミットが読めれば十分
-        with:
-          fetch-depth: 2
       - name: Get all parents
         # https://git-scm.com/docs/git-rev-parse#_other_rev_parent_shorthand_notations
         run: echo "PARENT_HASH='$(git rev-parse HEAD^@)'" >> $GITHUB_ENV
