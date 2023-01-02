@@ -8,7 +8,7 @@ jobs:
   create-template-issue:
     strategy:
       matrix:
-        # .github/template/以下のMarkdownファイルのファイル名を列挙（拡張子なし）
+        # .github/issues/以下のMarkdownファイルのファイル名を列挙（拡張子なし）
         filename: ["front-title", "pop-title"]
     runs-on: ubuntu-latest
     steps:
@@ -19,13 +19,14 @@ jobs:
           fetch-depth: 2
       - name: Get all parents
         # https://git-scm.com/docs/git-rev-parse#_other_rev_parent_shorthand_notations
-        run: echo "ALL_PARENT=$(git rev-parse HEAD^@)" >> $GITHUB_ENV
+        run: echo "PARENT_HASH='$(git rev-parse HEAD^@)'" >> $GITHUB_ENV
+      - run: echo "PARENT_HASH='$(git rev-parse HEAD^@)'"
       - name: Create template issue
         # テンプレートから引っ張ってきた初回時のみ発火させる
         # git rev-parse HEAD^@は親がない場合（最初のコミットの場合）空白となり、それ以外は最初のコミットを指す
-        if: env.ALL_PARENT == ''
+        if: env.PARENT_HASH == ''
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/template/${{ matrix.filename }}.md
+          filename: .github/issues/${{ matrix.filename }}.md
