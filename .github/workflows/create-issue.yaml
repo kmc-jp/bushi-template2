@@ -18,11 +18,11 @@ jobs:
           fetch-depth: 0
       - name: Get all parents
         # https://git-scm.com/docs/git-rev-parse#_other_rev_parent_shorthand_notations
-        run: echo "PARENT_HASH=$(git rev-parse HEAD^@)" >> $GITHUB_ENV
+        run: echo "HAS_PARENT=$(git rev-parse HEAD^@ | wc -l)" >> $GITHUB_ENV
       - name: Create template issue
         # テンプレートから引っ張ってきた初回時のみ発火させる
         # git rev-parse HEAD^@は親がない場合（最初のコミットの場合）空白となり、それ以外は最初のコミットを指す
-        if: env.PARENT_HASH == ''
+        if: env.HAS_PARENT == '0'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
