@@ -8,7 +8,7 @@ MKDIR := mkdir -p
 RM := rm -fr
 PWD := $(shell pwd)
 
-BUILD_IMAGE_TAG := v1.2.0-pre-for-m1
+BUILD_IMAGE_TAG := latest
 
 PANDOC := pandoc -f markdown+east_asian_line_breaks -t latex -N --pdf-engine=lualatex --top-level-division=chapter --table-of-contents --toc-depth=3
 RUN_AT := docker run --mount type=bind,source="$(PWD)",target=/workdir ghcr.io/kmc-jp/bushi-build-image:$(BUILD_IMAGE_TAG)
