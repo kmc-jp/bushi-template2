@@ -7,7 +7,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
       - name: build pdf
-        run: docker run --mount type=bind,source="$(pwd)",target=/workdir ghcr.io/kmc-jp/bushi-build-image:latest
+        run: make
       - name: save log
         uses: actions/upload-artifact@v3
         with:
