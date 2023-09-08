@@ -3,6 +3,9 @@ require 'fileutils'
 # pandocのオプションを設定
 PANDOC='pandoc -f markdown+east_asian_line_breaks -t latex -N --pdf-engine=lualatex --top-level-division=chapter --table-of-contents --toc-depth=3'
 
+puts 'use make'
+exit
+
 # kijiの中身を雑にoutにコピー（ディレクトリつくるのめんどいので）
 Dir.glob('kiji/*') do |file|
   FileUtils.cp_r(file, 'out')
