@@ -23,11 +23,11 @@ out/luakmcbook.cls: out/luakmcbook.dtx out/luakmcbook.ins
 	lualatex luakmcbook.ins
 
 out/bushi.tex: bushi.tex
-	$(CP) $^ $@
+	$(CP) $< $@
 out/luakmcbook.dtx: luakmcbook.dtx
-	$(CP) $^ $@
+	$(CP) $< $@
 out/luakmcbook.ins: luakmcbook.ins
-	$(CP) $^ $@
+	$(CP) $< $@
 
 covers: $(wildcard cover/*)
 	$(MKDIR) out/cover
