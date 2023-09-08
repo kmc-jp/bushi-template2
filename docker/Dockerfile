@@ -21,8 +21,9 @@ RUN mkdir -p /usr/local/share/fonts/ \
   && fc-cache \
   && rm -rf /tmp/*
 
+ARG TARGETARCH
 RUN cd /tmp \
-  && wget https://github.com/jgm/pandoc/releases/download/2.16/pandoc-2.16-1-amd64.deb -O pandoc.deb \
+  && wget https://github.com/jgm/pandoc/releases/download/2.16/pandoc-2.16-1-${TARGETARCH}.deb -O pandoc.deb \
   && dpkg -i pandoc.deb \
   && rm -rf /tmp/*
 
