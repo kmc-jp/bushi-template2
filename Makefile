@@ -11,16 +11,16 @@ PWD := $(shell pwd)
 BUILD_IMAGE_TAG := v1.2.0-pre-for-m1
 
 PANDOC := pandoc -f markdown+east_asian_line_breaks -t latex -N --pdf-engine=lualatex --top-level-division=chapter --table-of-contents --toc-depth=3
-RUN_AT := docker run --mount type=bind,source="$(PWD)/out",target=/workdir ghcr.io/kmc-jp/bushi-build-image:$(BUILD_IMAGE_TAG)
+RUN_AT := docker run --mount type=bind,source="$(PWD)",target=/workdir ghcr.io/kmc-jp/bushi-build-image:$(BUILD_IMAGE_TAG)
 
 pdf: $(texs) out/bushi.tex out/luakmcbook.cls covers
-	$(RUN_AT) latexmk -lualatex bushi.tex
+	cd out && latexmk -lualatex bushi.tex
 
 out/%.tex: kiji/%.md
 	$(PANDOC) -o $@ $^
 
 out/luakmcbook.cls: out/luakmcbook.dtx out/luakmcbook.ins
-	$(RUN_AT) lualatex luakmcbook.ins
+	lualatex luakmcbook.ins
 
 out/bushi.tex: bushi.tex
 	$(CP) $^ $@
@@ -32,6 +32,10 @@ out/luakmcbook.ins: luakmcbook.ins
 covers: $(wildcard cover/*)
 	$(MKDIR) out/cover
 	$(CP) $^ out/
+
+docker:
+	$(RUN_AT) make
+.PHONY: docker
 
 clean:
 	$(RM) out/*
