@@ -6,6 +6,7 @@ RUN apt-get update \
   fontconfig \
   fonts-noto-cjk-extra fonts-noto-color-emoji \
   xz-utils \
+  make \
   && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /usr/local/share/fonts/ \
