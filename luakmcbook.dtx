@@ -365,3 +365,7 @@
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
+% 参考文献を節レベルで表示する
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\chapter*}{\section*}{}{}
+\patchcmd{\thebibliography}{chapter}{section}{}{}{}
