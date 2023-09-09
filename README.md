@@ -2,6 +2,8 @@
 
 Xで出す部誌のリポジトリ
 
+* [記事を追加する方法](#記事を書く人へ)
+
 # 部誌の記事公開について
 
 今回部誌に寄せていただいた記事は、無償公開し得ることに同意したものとして扱わせていただきます。
@@ -43,25 +45,44 @@ https://github.com/kmc-jp/bushi-template2/pkgs/container/bushi-build-image にim
 こちらは、imageとは異なり、fork先のレポジトリでリリース版を作成する時とかに使うことを想定しています。
 
 # 記事を書く人へ
-記事はMarkdown形式で書いてください。
-
-記法は[こちら](https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#pandocs-markdown)参照。
+* 記事はMarkdown記法で書いてください。
+* **[校正規約](https://github.com/kmc-jp/bushi-template2/blob/master/kiji/kousei.md)を読んでください。**
+* [Markdownの記法の詳細](https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#pandocs-markdown)も参照。
 
 ## 記事の追加方法
-`kiji`ディレクトリ以下にMarkdownファイルを放り込んで、`bushi.tex`に`\include{拡張子抜きのファイル名}`を追加してやったあとビルドすると記事が追加されます。
+* `kiji`ディレクトリ以下にMarkdownファイルを置いてください。
+* `bushi.tex`に`\include{拡張子抜きのファイル名}`を追加して、ビルドすると記事が追加されます。
+* 記事が描けたらPull Requestしてください。
 
-記事が描けたらPull Requestしてください。
+ディレクトリ構造
+```
+- bushi.tex
+- /kiji
+  - /good-page # 作る
+     - good-page.md # 書く
+     - /images # 画像を使うなら
+        - good-image.png
+```
 
-##  一番上の見出しは `#` にしてください
-みほん
+##  記事の書き出しは次のようにしてください
 
 ```
-\chapterauthor[tuda]{tuda}
+\chapterauthor[名前]{名前}
 
-# 校正大会に関して（校正前に必ず読むこと）
+# 記事のタイトル
 
-～本文～
+本文
 ```
+
+## 簡単にわかるMarkdown記法
+
+
+* `# 記事タイトル` （記事内に1つ）
+* `## サブ見出し` `### サブサブ見出し`
+* **強調** `**強調**`
+* URLは`\url`を使って脚注に入れるのをおすすめします。
+  * `\footnote{\url{https://example.com}}`
+* その他のわからんについては、TeXを組む必要もあるので、相談してください。
 
 ## 画像を足したいときは
 自分の記事が`kiji/suzusime/sime.md`なら、`kiji/suzusime/images/hoge.png`に画像を置いて、
@@ -90,3 +111,4 @@ bushi.texの
 
 のように書いてください。
 
+画像の配置や段落の配置などのこだわりは入稿の手前で行うので、あまりこだわらないでください。
