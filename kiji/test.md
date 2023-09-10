@@ -1,0 +1,10 @@
+# てすと
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<XRD xmlns="http://docs.oasis-open.org/ns/xri/xrd-1.0">
+  <Link rel="lrdd" template="https://pawoo.net/.well-known/webfinger?resource={uri}"/>
+</XRD>
+```
+
+これがはみ出さないでほしい。
