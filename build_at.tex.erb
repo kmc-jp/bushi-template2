@@ -1,0 +1,5 @@
+\vskip1em
+\begin{tabular}{ll}
+  commit hash & <%= begin `git show --format='%H' --no-patch`.chomp rescue nil end || 'null' %>\\
+  build date & <%= Time.now %>\\
+\end{tabular}

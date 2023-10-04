@@ -6,6 +6,7 @@ texs := $(addprefix out/,$(notdir $(kijis:.md=.tex)))
 CP := cp -f
 MKDIR := mkdir -p
 RM := rm -fr
+ERB := erb
 PWD := $(shell pwd)
 
 BUILD_IMAGE_TAG := latest
@@ -22,12 +23,15 @@ out/%.tex: kiji/%.md
 out/luakmcbook.cls: out/luakmcbook.dtx out/luakmcbook.ins
 	lualatex luakmcbook.ins
 
-out/bushi.tex: bushi.tex
+out/bushi.tex: bushi.tex out/build_at.tex
 	$(CP) $< $@
 out/luakmcbook.dtx: luakmcbook.dtx
 	$(CP) $< $@
 out/luakmcbook.ins: luakmcbook.ins
 	$(CP) $< $@
+
+out/build_at.tex: build_at.tex.erb
+	$(ERB) $< > $@
 
 covers: $(wildcard cover/*)
 	$(MKDIR) out/cover
