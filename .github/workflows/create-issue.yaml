@@ -3,13 +3,13 @@ on:
   - push
 permissions:
   contents: read
-  issues: write 
+  issues: write
 jobs:
   create-template-issue:
     strategy:
       matrix:
         # .github/issues/以下のMarkdownファイルのファイル名を列挙（拡張子なし）
-        filename: ["front-title", "pop-title"]
+        filename: ["front-title", "pop-title", "ndl"]
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
