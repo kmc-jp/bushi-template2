@@ -13,7 +13,7 @@ Xで出す部誌のリポジトリ
 # タイプセットする方法
 dockerだと
 ```
-docker run --mount type=bind,source="$(pwd)",target=/workdir ghcr.io/kmc-jp/bushi-build-image:latest
+docker run --mount type=bind,source="$(pwd)",target=/workdir ghcr.io/kmc-jp/bushi-build-image:latest make
 ```
 
 そうでない時は単に
