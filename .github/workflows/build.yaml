@@ -14,8 +14,9 @@ jobs:
           name: log
           path: out/*.log
       - name: save artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bushi.pdf
           path: out/bushi.pdf
           if-no-files-found: error
+          retention-days: 7
